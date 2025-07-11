@@ -13,6 +13,7 @@ python backend/image_to_ppt.py path/to/image.png -o output.pptx
 ```
 
 The generated `output.pptx` will contain a single 1920x1080 slide with detected shapes, text and tables positioned to roughly match the source image.
+Irregular polygons are currently approximated with rectangles as `python-pptx` does not provide a freeform API.
 
 ## Windows GUI
 

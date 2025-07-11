@@ -124,7 +124,10 @@ def add_elements_to_slide(slide, shapes, texts, tables, img_size, slide_size):
         elif shp['type'] == 'circle':
             slide.shapes.add_shape(MSO_SHAPE.OVAL, left, top, width, height)
         else:
-            slide.shapes.add_shape(MSO_SHAPE.FREEFORM, left, top, width, height)
+            # MSO_SHAPE enum does not include a generic freeform option.
+            # For arbitrary polygons we approximate the region with a rectangle
+            # so the script does not raise an AttributeError.
+            slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
 
     for table in tables:
         x, y, w, h = table['bbox']
