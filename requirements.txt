@@ -2,8 +2,8 @@
 opencv-python-headless>=4.7.0
 scikit-image>=0.20.0
 
-# 레이아웃 분석 (Detectron2 백엔드)
-layoutparser[detectron2]>=0.7.0
+# layoutparser 의 main 브랜치(최신 개발 버전) 설치
+git+https://github.com/Layout-Parser/layout-parser.git@main#egg=layoutparser[detectron2]
 
 # OCR
 pytesseract>=0.3.10
