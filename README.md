@@ -12,7 +12,7 @@ All dependencies are listed in `requirements.txt`. Make sure you have Tesseract 
 python backend/image_to_ppt.py path/to/image.png -o output.pptx
 ```
 
-The generated `output.pptx` will contain a single slide with detected shapes, text and tables positioned to roughly match the source image.
+The generated `output.pptx` will contain a single 1920x1080 slide with detected shapes, text and tables positioned to roughly match the source image.
 
 ## Windows GUI
 

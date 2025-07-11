@@ -1,6 +1,7 @@
 import cv2
 import pytesseract
 from pptx import Presentation
+from pptx.util import Inches
 import numpy as np
 from pptx.enum.shapes import MSO_SHAPE
 
@@ -137,6 +138,9 @@ def create_ppt_from_image(image_path, output_path='output.pptx'):
     tables = extract_tables(image)
 
     prs = Presentation()
+    # Force slide size to 1920x1080 (16:9) in pixels
+    prs.slide_width = Inches(20)  # 1920 px at 96 DPI
+    prs.slide_height = Inches(11.25)  # 1080 px at 96 DPI
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     img_h, img_w = image.shape[:2]
     add_elements_to_slide(slide, shapes, texts, tables, (img_w, img_h))
