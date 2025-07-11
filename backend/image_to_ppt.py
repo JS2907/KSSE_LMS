@@ -89,10 +89,23 @@ def extract_tables(image):
             "cols": cols}]
 
 
-def add_elements_to_slide(slide, shapes, texts, tables, img_size):
+def add_elements_to_slide(slide, shapes, texts, tables, img_size, slide_size):
+    """Add detected elements to *slide*.
+
+    Parameters
+    ----------
+    slide: pptx.slide.Slide
+        The slide to populate.
+    shapes, texts, tables: list
+        Detected elements from the source image.
+    img_size: (int, int)
+        Size of the source image as ``(width, height)``.
+    slide_size: (int, int)
+        Target slide dimensions as ``(width, height)``.
+    """
+
     img_w, img_h = img_size
-    slide_w = slide.part.slide_width
-    slide_h = slide.part.slide_height
+    slide_w, slide_h = slide_size
 
     def scale_x(x):
         return int(x * slide_w / img_w)
@@ -143,7 +156,14 @@ def create_ppt_from_image(image_path, output_path='output.pptx'):
     prs.slide_height = Inches(11.25)  # 1080 px at 96 DPI
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     img_h, img_w = image.shape[:2]
-    add_elements_to_slide(slide, shapes, texts, tables, (img_w, img_h))
+    add_elements_to_slide(
+        slide,
+        shapes,
+        texts,
+        tables,
+        (img_w, img_h),
+        (prs.slide_width, prs.slide_height),
+    )
     prs.save(output_path)
 
 
