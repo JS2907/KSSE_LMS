@@ -1,0 +1,27 @@
+# 이미지 처리 & 도형 인식
+opencv-python-headless>=4.7.0
+scikit-image>=0.20.0
+
+# 레이아웃 분석 (Detectron2 백엔드)
+layoutparser[detectron2]>=0.7.0
+
+# OCR
+pytesseract>=0.3.10
+
+# 파워포인트 생성
+python-pptx>=0.6.21
+
+# 벡터 도형 처리
+shapely>=2.0.1
+
+# 차트 재생성 (옵션)
+matplotlib>=3.7.0
+
+# (표 영역 인식) Camelot — PDF 표 추출이 필요할 때
+camelot-py[cv]>=0.10.1
+
+# 환경변수 로딩 (.env 사용 시)
+python-dotenv>=1.0.0
+
+# 추가 유틸
+tqdm>=4.65.0
